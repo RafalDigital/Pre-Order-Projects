@@ -135,7 +135,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
         )}
 
         {/* Child */}
-        <div className="w-1/3 h-full flex flex-col justify-center gap-6 py-8 px-6 rounded-2xl bg-gray-100 shadow-slate-900/40 shadow-lg">
+        <div className="w-1/3 h-full flex flex-col justify-center gap-6 py-8 px-6 rounded-2xl bg-gray-100 shadow-slate-900/40 shadow-lg max-md:w-4/5">
           <div className="flex flex-col items-center">
             <h1 className="font-zain text-4xl w-full font-semibold text-mauve-600 text-center">PreOrder Desert</h1>
             <p className="font-zain text-lg w-full font-semibold text-gray-600/40 text-center">Isi Data Pesanan Anda</p>
