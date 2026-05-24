@@ -232,7 +232,9 @@ function Step3({subTotal = 0, ongkir = 0, total = 0, listProduk, selectedProduct
       </div>
 
       {statusMessage && (
-        <p className={`text-sm text-center font-semibold ${statusMessage.startsWith('Gagal') ? 'text-red-500' : 'text-green-600'}`}>
+        // <p className={`text-sm text-center font-semibold ${statusMessage.startsWith('Gagal') ? 'text-red-500' : 'text-green-600'}`}>
+        <p className={`text-sm text-center font-semibold text-red-500`}>
+
           {statusMessage}
         </p>
       )}
