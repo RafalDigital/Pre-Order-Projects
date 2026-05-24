@@ -392,5 +392,3 @@ function LoadingScreen({ onFinished }) {
     </div>
   );
 }
-
-function
