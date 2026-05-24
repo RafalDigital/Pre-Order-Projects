@@ -58,10 +58,10 @@ const [statusMessage, setStatusMessage] = useState('');
     setLoading(true);
     setStatusMessage('');
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhPj1c8t5ugf4srSM1MpkpaDUSteQkvp3sLiCWR2ysxMgcPqCtaAPfTFCwYCFJI29E/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkIL4vY4tpDzud-4qs-mJHuhgUszoW5nysNeih86k/dev';
 
     try {
-      const teksProdukBeli = listProduk.filter(prod => (formData.produk[prod.id] || 0) > 0).map((prod) => {`${prod.name} (${formData.produk[prod.id]})`}).join(', ');
+      const teksProdukBeli = listProduk.filter(prod => (formData.produk[prod.id] || 0) > 0).map((prod) => `${prod.name} (${formData.produk[prod.id]})`).join(', ');
 
       if (!teksProdukBeli) {
         setStatusMessage('Gagal: Anda belum memilih produk apa pun.');
@@ -82,12 +82,12 @@ const [statusMessage, setStatusMessage] = useState('');
     const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       headers: {
-        "Content/Type":'application/x-www-form-urlencoded',
+        "Content-Type":'application/x-www-form-urlencoded',
       },
       body: formBody.toString(),
     });
 
-    const result = await response.json;
+    const result = await response.json();
     
     if(result.status === 'success') {
       setStatusMessage('Pre-Order berhasil disimpan! Terima kasih.');
