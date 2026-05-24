@@ -91,6 +91,7 @@ const [statusMessage, setStatusMessage] = useState('');
     
     if(result.status === 'success') {
       setStatusMessage('Pre-Order berhasil disimpan! Terima kasih.');
+      console.log(statusMessage)
       setFormData({
         nama: '',
         noTelp: '',
@@ -109,6 +110,8 @@ const [statusMessage, setStatusMessage] = useState('');
   } finally {
     setLoading(false);
   }
+      console.log(statusMessage)
+
   }}
 
   return (
@@ -221,7 +224,7 @@ function Step3({subTotal = 0, ongkir = 0, total = 0, listProduk, selectedProduct
         </p>
       )}
 
-      <button onClick={() => handleSubmit} className={`w-full py-2 px-4 bg-mauve-600 rounded-2xl border border-mauve-600 font-zain font-medium text-xl text-gray-50 ${loading ? 'bg-gray-400 border-gray-400 cursor-not-allowed opacity-70' : 'bg-mauve-600 border-mauve-600 hover:bg-mauve-700 active:scale-[0.98]'}`} type="submit">
+      <button onClick={() => handleSubmit} className={`w-full py-2 px-4 bg-mauve-600 rounded-2xl border border-mauve-600 font-zain font-medium text-xl text-gray-50 ${loading ? 'bg-gray-400 border-gray-400 cursor-not-allowed opacity-70' : 'bg-mauve-600 border-mauve-600 hover:bg-mauve-700 active:scale-[0.98]'}`} type="button">
         {loading ? 'Sedang Memproses...' : 'Order'}
       </button>
     </div>
