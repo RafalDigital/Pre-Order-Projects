@@ -334,7 +334,7 @@ function LoadingScreen({ onFinished }) {
     <div 
       className={`fixed inset-0 flex flex-col items-center justify-center bg-white font-sans select-none z-50
         transition-all duration-500 ease-in-out
-        ${isExiting ? 'opacity-0 -translate-y-12 pointer-events-none' : 'opacity-100 translate-y-0'}`}
+        ${isExiting ? '-translate-y-full pointer-events-none' : 'translate-y-0'}`}
     >
       
       {/* Container Utama */}
@@ -354,7 +354,7 @@ function LoadingScreen({ onFinished }) {
         </div>
 
         {/* Subtitle / Status Text */}
-        <p className="text-gray-600/20 text-sm tracking-wider animate-pulse">
+        <p className="text-gray-600/40 text-sm tracking-wider animate-pulse">
           Tunggu Sebentar...
         </p>
       </div>
