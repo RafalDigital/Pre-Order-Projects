@@ -17,10 +17,10 @@ const [showLoading, setShowLoading] = useState(true);
 const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const listProduk = [
-    { id: 'p1', nama: 'Matcha Mille Crepes', harga: 25000 },
-    { id: 'p2', nama: 'Chocolate Mousse', harga: 30000 },
-    { id: 'p3', nama: 'Tiramisu Box', harga: 35000 },
-    { id: 'p4', nama: 'Strawberry Cheesetart', harga: 28000 },
+    { id: 'p1', nama: 'Matcha Mille Crepes', harga: 25000, img: './assets/Matcha-Mille-Crepes.webp'},
+    { id: 'p2', nama: 'Chocolate Mousse', harga: 30000, img: './assets/Chocolate-Mousse.webp' },
+    { id: 'p3', nama: 'Tiramisu Box', harga: 35000, img: './assets/Tiramisu-Box.webp' },
+    { id: 'p4', nama: 'Strawberry Cheesetart', harga: 28000, img: './assets/Strawberry-Cheesetart.webp' },
   ];
   const ongkir = 2000;
 
@@ -188,6 +188,7 @@ function Step2({listProduk, selectedProduct, handleQtyChange}) {
           nama={prod.nama} 
           harga={prod.harga} 
           qty={selectedProduct[prod.id] || 0} 
+          img={prod.img}
           onIncrement={() => handleQtyChange(prod.id, (selectedProduct[prod.id] || 0) + 1)} 
           onDecrement={() => handleQtyChange(prod.id, (selectedProduct[prod.id] || 0) - 1)}
           onDirectChange={(value) => handleQtyChange(prod.id, value)}/>
