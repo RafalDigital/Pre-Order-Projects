@@ -81,6 +81,7 @@ const [statusMessage, setStatusMessage] = useState('');
 
     const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
+      mode: 'no-cors',
       // headers: {
       //   "Content-Type":'application/x-www-form-urlencoded',
       // },
