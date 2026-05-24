@@ -292,7 +292,7 @@ function ProductCard({nama, harga, img = mockup, qty, onIncrement, onDecrement, 
     <div className="flex flex-col w-full h-full px-6 py-6 gap-2 bg-gray-50 shadow-xl rounded-2xl justify-between">
 
       <div className="flex flex-col w-full gap-2">
-        <div className="flex justify-between items-center overflow-hidden w-full h-24 rounded-2xl shadow-sm">
+        <div className="flex justify-between items-center overflow-hidden w-full h-24 rounded-2xl shadow-sm max-md:h-fit">
           <img className="w-full h-full" src={img} alt="" />
         </div>
         <div className="flex flex-col">
