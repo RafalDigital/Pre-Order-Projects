@@ -79,12 +79,24 @@ const [statusMessage, setStatusMessage] = useState('');
       formBody.append('ongkir', biayaPengiriman);
       formBody.append('totalBayar', total);
 
+      const dataPayload = {
+    nama: formData.nama,
+    noTelp: formData.noTelp,
+    alamat: formData.alamat,
+    tanggalKirim: formData.kirim,
+    daftarProduk: teksProdukBeli,
+    subtotal: subTotal,
+    ongkir: biayaPengiriman,
+    totalBayar: total
+  };
+
     const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
-      headers: {
-        "Content-Type":'application/x-www-form-urlencoded',
-      },
-      body: formBody.toString(),
+      // headers: {
+      //   "Content-Type":'application/x-www-form-urlencoded',
+      // },
+      // body: formBody.toString(),
+      body: JSON.stringify(dataPayload),
     });
 
     const result = await response.json();
