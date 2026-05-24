@@ -96,7 +96,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
       console.log(statusMessage)
       setShowSuccessModal(true);
     } else {
-      setStatusMessage(`Gagal: ${result.message}`);
+      setStatusMessage(`${result.message}`);
     }
 
   } catch (error) {
