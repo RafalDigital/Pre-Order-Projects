@@ -60,7 +60,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
     setLoading(true);
     setStatusMessage('');
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcr6ppnnFIqvKN4GyURDD_XmNOzgMNeI9ihQMBWt3aL-_xTTdEfV7lAc2hy4zkvvG0/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz9WhpUF_Xn0xawwpLb0iLi378BwLiawEHWiXZZBuloAhlLjoWnD3yIUEXmNW3GCfMT/exec';
 
     try {
       const teksProdukBeli = listProduk.filter(prod => (formData.produk[prod.id] || 0) > 0).map((prod) => `${prod.nama} (${formData.produk[prod.id]})`).join(', ');
