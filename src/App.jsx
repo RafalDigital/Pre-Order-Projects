@@ -128,7 +128,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   return (
     <>
-      <section className="flex flex-col items-center justify-center gap-8 min-h-screen h-full w-full py-6 pr-4">
+      <section className="flex flex-col items-center justify-center gap-8 min-h-screen h-full w-full py-6">
 
         {showLoading && (
           <LoadingScreen onFinished={() => setShowLoading(false)} />
