@@ -58,7 +58,7 @@ const [statusMessage, setStatusMessage] = useState('');
     setLoading(true);
     setStatusMessage('');
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzALbfmZc89Q1zZg-2eYph7_eCbU46ffeiWzqYc1c-0uaAtI7CsK5xs_k2e_dmwHznZ/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzEpxVqspjGpzK56qR372CeE3HG_M9tGzAhmpYF63TaG-0o6l1TnfGWOrRX_cN4PuU-/exec';
 
     try {
       const teksProdukBeli = listProduk.filter(prod => (formData.produk[prod.id] || 0) > 0).map((prod) => `${prod.name} (${formData.produk[prod.id]})`).join(', ');
@@ -79,31 +79,12 @@ const [statusMessage, setStatusMessage] = useState('');
       formBody.append('ongkir', biayaPengiriman);
       formBody.append('totalBayar', total);
 
-      const dataPayload = {
-    nama: formData.nama,
-    noTelp: formData.noTelp,
-    alamat: formData.alamat,
-    tanggalKirim: formData.kirim,
-    daftarProduk: teksProdukBeli,
-    subtotal: subTotal,
-    ongkir: biayaPengiriman,
-    totalBayar: total
-  };
-
-  console.log(dataPayload)
-
     const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       headers: {
         "Content-Type":'application/x-www-form-urlencoded',
       },
-      // body: formBody.toString(),
-      // mode: 'no-cors',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      // },
-      // body: JSON.stringify(dataPayload),
-      body: (JSON.stringify(dataPayload)),
+      body: formBody.toString(),
     });
 
     const result = await response.json();
