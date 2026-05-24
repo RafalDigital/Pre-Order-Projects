@@ -15,8 +15,8 @@ html, body {
     width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow-y: visible;
-    background: oklch(19.12% 0.022 263.85);
-    /* background: white; */
+    /* background: oklch(19.12% 0.022 263.85); */
+    background: white;
 }
 
 #root {
