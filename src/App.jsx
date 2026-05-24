@@ -117,6 +117,7 @@ const [showLoading, setShowLoading] = useState(true);
 
   return (
     <>
+      <Background/>
       <section className="flex flex-col items-center justify-center gap-8 min-h-screen h-full w-full py-6 pr-4">
 
         {showLoading && (
