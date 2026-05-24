@@ -58,7 +58,7 @@ const [statusMessage, setStatusMessage] = useState('');
     setLoading(true);
     setStatusMessage('');
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMl2JVe9puu9oQ4pFCiNnRMCLC9uDBUE8JXdHAUAatV3L5YPJc5qXeFRmtB1tOhWuq/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxx10twLTi-aS8IIhbCr92JsNbo6-YnoDZVajiLUW5JzySOYlecVVhtO_UZQPRKpuUm/exec';
 
     try {
       const teksProdukBeli = listProduk.filter(prod => (formData.produk[prod.id] || 0) > 0).map((prod) => `${prod.name} (${formData.produk[prod.id]})`).join(', ');
@@ -81,10 +81,9 @@ const [statusMessage, setStatusMessage] = useState('');
 
     const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
-      mode: 'no-cors',
-      // headers: {
-      //   "Content-Type":'application/x-www-form-urlencoded',
-      // },
+      headers: {
+        "Content-Type":'application/x-www-form-urlencoded',
+      },
       body: formBody.toString(),
     });
 
