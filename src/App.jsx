@@ -96,6 +96,7 @@ const [statusMessage, setStatusMessage] = useState('');
       //   "Content-Type":'application/x-www-form-urlencoded',
       // },
       // body: formBody.toString(),
+      mode: 'no-cors',
       body: JSON.stringify(dataPayload),
     });
 
