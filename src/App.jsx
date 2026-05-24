@@ -214,7 +214,7 @@ function Step3({subTotal = 0, ongkir = 0, total = 0, listProduk, selectedProduct
               <p className="text-sm text-gray-500 text-center italic py-2">Belum ada produk yang dipilih</p>
           ):(
             produkDibeli.map((prod) => (
-              <ProductCardDetails key={prod.id} nama={prod.nama} harga={prod.harga} qty={selectedProduct[prod.id]}/>
+              <ProductCardDetails key={prod.id} nama={prod.nama} img={prod.img} harga={prod.harga} qty={selectedProduct[prod.id]}/>
             ))
             )
           }
