@@ -58,7 +58,7 @@ const [statusMessage, setStatusMessage] = useState('');
     setLoading(true);
     setStatusMessage('');
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxx10twLTi-aS8IIhbCr92JsNbo6-YnoDZVajiLUW5JzySOYlecVVhtO_UZQPRKpuUm/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzALbfmZc89Q1zZg-2eYph7_eCbU46ffeiWzqYc1c-0uaAtI7CsK5xs_k2e_dmwHznZ/exec';
 
     try {
       const teksProdukBeli = listProduk.filter(prod => (formData.produk[prod.id] || 0) > 0).map((prod) => `${prod.name} (${formData.produk[prod.id]})`).join(', ');
