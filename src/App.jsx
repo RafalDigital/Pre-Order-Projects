@@ -304,7 +304,7 @@ function ProductCard({nama, harga, img = mockup, qty, onIncrement, onDecrement, 
       <div className="flex flex-col w-full gap-2">
         <div className="flex justify-between items-center gap-2">
           <button onClick={onIncrement} className="px-2.5 py-1 rounded-full flex items-center justify-center border border-gray-800/40">+</button>
-          <input onChange={(e) => onDirectChange(e.target.value)} className="w-full text-center py-0.5 border border-gray-800/40 rounded-full" type="number" min="0" max="100" value={qty}/>
+          <input onChange={(e) => onDirectChange(e.target.value)} className="w-full text-center py-0.5 border border-gray-800/40 rounded-full appearance: none;" type="number" min="0" max="100" value={qty}/>
           <button onClick={onDecrement} className="px-3 py-1 rounded-full flex items-center justify-center border border-gray-800/40">-</button>
         </div>
         <button onClick={() => { if(qty === 0) onIncrement() }} className="w-full py-1 px-1 bg-mauve-600 rounded-2xl border border-mauve-600 font-zain text-md text-gray-50">
