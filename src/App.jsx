@@ -274,8 +274,8 @@ function Step3({subTotal = 0, ongkir = 0, total = 0, listProduk, selectedProduct
 function NextPrev({handleNext, handlePrev, step}) {
   return (
     <div className="flex flex-col items-center gap-4 w-1/3">
-      <button onClick={handleNext} className={`w-full py-2 px-4 bg-mauve-600 rounded-2xl border ${step === 3?'pointer-events-none opacity-40 cursor-not-allowed':''} border-mauve-600 font-zain font-medium text-xl text-gray-50`}>Next</button>
-      <button onClick={handlePrev} className={`w-full py-2 px-4 rounded-2xl border border-mauve-600 font-zain font-medium text-xl text-gray-50 ${step === 1?'pointer-events-none opacity-40 cursor-not-allowed':''}`}>Prev</button>
+      <button onClick={handleNext} className={`w-full py-2 px-4 bg-mauve-600 rounded-2xl border ${step === 3?'pointer-events-none opacity-40 cursor-not-allowed':''} border-mauve-600 hover:bg-mauve-700 hover:border-mauve-600/60 font-zain font-medium text-xl text-gray-50`}>Next</button>
+      <button onClick={handlePrev} className={`w-full py-2 px-4 rounded-2xl border border-mauve-600 font-zain font-medium text-xl text-gray-50 hover:opacity-40 ${step === 1?'pointer-events-none opacity-40 cursor-not-allowed':''}`}>Prev</button>
     </div>
   )
 }
