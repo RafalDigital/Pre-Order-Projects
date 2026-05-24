@@ -96,7 +96,10 @@ const [statusMessage, setStatusMessage] = useState('');
       //   "Content-Type":'application/x-www-form-urlencoded',
       // },
       // body: formBody.toString(),
-      mode: 'no-cors',
+      // mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(dataPayload),
     });
 
