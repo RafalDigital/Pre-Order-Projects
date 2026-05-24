@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react"
 import mockup from './assets/mockup.webp'
+import MatchaMilleCrepes from './assets/Matcha-Mille-Crepes.webp'
+import ChocolateMousse from './assets/Chocolate-Mousse.webp'
+import TiramisuBox from './assets/Tiramisu-Box.webp'
+import StrawberryCheesetart from './assets/Strawberry-Cheesetart.webp'
 
 
 export default function App() {
@@ -17,10 +21,10 @@ const [showLoading, setShowLoading] = useState(true);
 const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const listProduk = [
-    { id: 'p1', nama: 'Matcha Mille Crepes', harga: 25000, img: './assets/Matcha-Mille-Crepes.webp'},
-    { id: 'p2', nama: 'Chocolate Mousse', harga: 30000, img: './assets/Chocolate-Mousse.webp' },
-    { id: 'p3', nama: 'Tiramisu Box', harga: 35000, img: './assets/Tiramisu-Box.webp' },
-    { id: 'p4', nama: 'Strawberry Cheesetart', harga: 28000, img: './assets/Strawberry-Cheesetart.webp' },
+    { id: 'p1', nama: 'Matcha Mille Crepes', harga: 25000, img: MatchaMilleCrepes},
+    { id: 'p2', nama: 'Chocolate Mousse', harga: 30000, img: ChocolateMousse},
+    { id: 'p3', nama: 'Tiramisu Box', harga: 35000, img: TiramisuBox},
+    { id: 'p4', nama: 'Strawberry Cheesetart', harga: 28000, img: StrawberryCheesetart},
   ];
   const ongkir = 2000;
 
