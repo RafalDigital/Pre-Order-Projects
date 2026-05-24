@@ -185,7 +185,7 @@ function Step1({inputChange, formData}) {
 function Step2({listProduk, selectedProduct, handleQtyChange}) {
   return (
     <>
-    <div className="grid grid-cols-2 grid-rows-[repeat(auto-fill,1fr)] w-full h-full gap-5">
+    <div className="grid grid-cols-2 grid-rows-[repeat(auto-fill,1fr)] w-full h-full gap-5 max-md:grid-cols-1">
       {listProduk.map((prod) => (
         <ProductCard 
           key={prod.id} 
@@ -280,7 +280,7 @@ function Step3({subTotal = 0, ongkir = 0, total = 0, listProduk, selectedProduct
 
 function NextPrev({handleNext, handlePrev, step}) {
   return (
-    <div className="flex flex-col items-center gap-4 w-1/3">
+    <div className="flex flex-col items-center gap-4 w-1/3 max-md:w-4/5">
       <button onClick={handleNext} className={`w-full py-2 px-4 bg-mauve-600 rounded-2xl border ${step === 3?'pointer-events-none opacity-40 cursor-not-allowed':''} border-mauve-600 hover:bg-mauve-700 hover:border-mauve-600/60 font-zain font-medium text-xl text-gray-50`}>Next</button>
       <button onClick={handlePrev} className={`w-full py-2 px-4 rounded-2xl border border-mauve-600 font-zain font-medium text-xl text-gray-50 hover:opacity-40 ${step === 1?'pointer-events-none opacity-40 cursor-not-allowed':''}`}>Prev</button>
     </div>
