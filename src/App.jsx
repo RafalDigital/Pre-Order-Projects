@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import mockup from './assets/mockup.webp'
 
 
@@ -13,6 +13,7 @@ export default function App() {
   })
 const [loading, setLoading] = useState(false);
 const [statusMessage, setStatusMessage] = useState('');
+const [showLoading, setShowLoading] = useState(true);
 
   const listProduk = [
     { id: 'p1', nama: 'Matcha Mille Crepes', harga: 25000 },
@@ -117,6 +118,11 @@ const [statusMessage, setStatusMessage] = useState('');
   return (
     <>
       <section className="flex flex-col items-center justify-center gap-8 min-h-screen h-full w-full py-6 pr-4">
+
+        {showLoading && (
+          <LoadingScreen onFinished={() => setShowLoading(false)} />
+        )}
+
         {/* Child */}
         <div className="w-1/3 h-full flex flex-col justify-center gap-6 py-8 px-6 rounded-2xl bg-gray-100 shadow-slate-900/40 shadow-lg">
           <div className="flex flex-col items-center">
@@ -286,4 +292,78 @@ function ProductCardDetails({qty, img = mockup, nama, harga}) {
       <p className="font-nunito font-bold text-sm text-gray-900/40">Rp {harga.toLocaleString()} x {qty}</p>
     </div>
   )
+}
+
+function LoadingScreen({ onFinished }) {
+  const [progress, setProgress] = useState(0);
+  const [isExiting, setIsExiting] = useState(false);
+
+  useEffect(() => {
+    const intervalTime = 30; 
+    const totalDuration = 2500; // Sengaja dibuat 2.5 detik agar sisa 0.5 detiknya dipakai untuk animasi exit (Total 3 detik)
+    const increment = (intervalTime / totalDuration) * 100;
+
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer);
+          return 100;
+        }
+        return prev + increment;
+      });
+    }, intervalTime);
+
+    // Memicu animasi exit setelah progress bar penuh (2.5 detik)
+    const exitTimer = setTimeout(() => {
+      setIsExiting(true);
+    }, totalDuration);
+
+    // Memicu fungsi onFinished setelah animasi exit selesai (2.5 detik + 0.5 detik animasi = 3 detik)
+    const finishedTimer = setTimeout(() => {
+      if (onFinished) onFinished();
+    }, totalDuration + 500); 
+
+    return () => {
+      clearInterval(timer);
+      clearTimeout(exitTimer);
+      clearTimeout(finishedTimer);
+    };
+  }, [onFinished]);
+
+  return (
+    <div 
+      className={`fixed inset-0 flex flex-col items-center justify-center bg-white font-sans select-none z-50
+        transition-all duration-500 ease-in-out
+        ${isExiting ? 'opacity-0 -translate-y-12 pointer-events-none' : 'opacity-100 translate-y-0'}`}
+    >
+      
+      {/* Container Utama */}
+      <div className="text-center flex flex-col items-center justify-center flex-grow">
+        {/* Judul Utama */}
+        <h1 className="text-4xl md:text-5xl font-bold text-mauve-500 tracking-wide mb-4">
+          PreOrder Desert
+        </h1>
+
+        {/* Progress Bar Container */}
+        <div className="w-64 h-3 bg-gray-200 rounded-full overflow-hidden mb-3">
+          {/* Progress Fill */}
+          <div 
+            className="h-full bg-mauve-500 transition-all duration-75 ease-out rounded-full"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+
+        {/* Subtitle / Status Text */}
+        <p className="text-gray-600/20 text-sm tracking-wider animate-pulse">
+          Tunggu Sebentar...
+        </p>
+      </div>
+
+      {/* Version Tag */}
+      <div className="pb-8 text-gray-600/40 text-sm font-medium">
+        v1.0
+      </div>
+
+    </div>
+  );
 }
