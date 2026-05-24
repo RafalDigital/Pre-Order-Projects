@@ -14,6 +14,7 @@ export default function App() {
 const [loading, setLoading] = useState(false);
 const [statusMessage, setStatusMessage] = useState('');
 const [showLoading, setShowLoading] = useState(true);
+const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const listProduk = [
     { id: 'p1', nama: 'Matcha Mille Crepes', harga: 25000 },
@@ -93,14 +94,7 @@ const [showLoading, setShowLoading] = useState(true);
     if(result.status === 'success') {
       setStatusMessage('Pre-Order berhasil disimpan! Terima kasih.');
       console.log(statusMessage)
-      setFormData({
-        nama: '',
-        noTelp: '',
-        alamat: '',
-        kirim: '',
-        produk: {},
-      });
-      setStep(1);
+      setShowSuccessModal(true);
     } else {
       setStatusMessage(`Gagal: ${result.message}`);
     }
@@ -114,6 +108,19 @@ const [showLoading, setShowLoading] = useState(true);
       console.log(statusMessage)
 
   }}
+
+  const handleCloseModal = () => {
+    setShowSuccessModal(false);
+    setStatusMessage('');
+    setFormData({
+      nama: '',
+      noTelp: '',
+      alamat: '',
+      kirim: '',
+      produk: {},
+    });
+    setStep(1);
+  };
 
   return (
     <>
@@ -131,7 +138,7 @@ const [showLoading, setShowLoading] = useState(true);
           </div>
             {step === 1 ?<Step1 inputChange={handlerInputChange} formData={formData}/>:''}
             {step === 2 ?<Step2 listProduk={listProduk} selectedProduct={formData.produk} handleQtyChange={handleQtyChange}/>:''}
-            {step === 3 ?<Step3 subTotal={subTotal} ongkir={biayaPengiriman} total={total} listProduk={listProduk} selectedProduct={formData.produk} handleSubmit={handleSubmit} loading={loading} statusMessage={statusMessage}/>:''}
+            {step === 3 ?<Step3 subTotal={subTotal} ongkir={biayaPengiriman} total={total} listProduk={listProduk} selectedProduct={formData.produk} handleSubmit={handleSubmit} loading={loading} statusMessage={statusMessage} showSuccessModal={showSuccessModal} onCloseModal={handleCloseModal}/>:''}
           </div>
 
           {/* Next & Prev */}
@@ -190,7 +197,7 @@ function Step2({listProduk, selectedProduct, handleQtyChange}) {
   )
 }
 
-function Step3({subTotal = 0, ongkir = 0, total = 0, listProduk, selectedProduct, handleSubmit, loading, statusMessage}) {
+function Step3({subTotal = 0, ongkir = 0, total = 0, listProduk, selectedProduct, handleSubmit, loading, statusMessage, showSuccessModal, onCloseModal}) {
   const produkDibeli = listProduk.filter(prod => (selectedProduct[prod.id] || 0)> 0);
   return(
     <div className="flex flex-col items-center gap-6">
@@ -233,6 +240,33 @@ function Step3({subTotal = 0, ongkir = 0, total = 0, listProduk, selectedProduct
       <button onClick={handleSubmit} className={`w-full py-2 px-4 bg-mauve-600 rounded-2xl border border-mauve-600 font-zain font-medium text-xl text-gray-50 ${loading ? 'bg-gray-400 border-gray-400 cursor-not-allowed opacity-70' : 'bg-mauve-600 border-mauve-600 hover:bg-mauve-700 active:scale-[0.98]'}`} type="button">
         {loading ? 'Sedang Memproses...' : 'Order'}
       </button>
+
+      {/* ==================== CUSTOM ALERT / MODAL SUKSES ==================== */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-sm flex flex-col items-center gap-4 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            {/* Ikon Centang Hijau */}
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-500 text-3xl font-bold">
+              ✓
+            </div>
+            
+            <div className="text-center">
+              <h3 className="font-nunito font-bold text-xl text-gray-900">Pre-Order Sukses!</h3>
+              <p className="font-nunito text-sm text-gray-500 mt-1">Data pesanan Anda berhasil disimpan ke dalam sistem.</p>
+            </div>
+
+            {/* Tombol Oke */}
+            <button
+              onClick={onCloseModal}
+              className="w-full mt-2 py-2 px-4 bg-green-500 hover:bg-green-600 active:scale-[0.98] transition-all rounded-xl font-zain font-medium text-lg text-white shadow-lg shadow-green-500/20"
+              type="button"
+            >
+              Oke, Kembali ke Awal
+            </button>
+          </div>
+        </div>
+      )}
+      {/* ====================================================================== */}
     </div>
   )
 }
@@ -263,7 +297,7 @@ function ProductCard({nama, harga, img = mockup, qty, onIncrement, onDecrement, 
       <div className="flex flex-col w-full gap-2">
         <div className="flex justify-between items-center gap-2">
           <button onClick={onIncrement} className="px-2.5 py-1 rounded-full flex items-center justify-center border border-gray-800/40">+</button>
-          <input onChange={(e) => onDirectChange(e.target.value)} className="w-full py-0.5 border border-gray-800/40 rounded-full" type="number" min="0" max="100" value={qty}/>
+          <input onChange={(e) => onDirectChange(e.target.value)} className="w-full text-center py-0.5 border border-gray-800/40 rounded-full" type="number" min="0" max="100" value={qty}/>
           <button onClick={onDecrement} className="px-3 py-1 rounded-full flex items-center justify-center border border-gray-800/40">-</button>
         </div>
         <button onClick={() => { if(qty === 0) onIncrement() }} className="w-full py-1 px-1 bg-mauve-600 rounded-2xl border border-mauve-600 font-zain text-md text-gray-50">
@@ -300,7 +334,7 @@ function LoadingScreen({ onFinished }) {
 
   useEffect(() => {
     const intervalTime = 30; 
-    const totalDuration = 2500; // Sengaja dibuat 2.5 detik agar sisa 0.5 detiknya dipakai untuk animasi exit (Total 3 detik)
+    const totalDuration = 2500;
     const increment = (intervalTime / totalDuration) * 100;
 
     const timer = setInterval(() => {
@@ -313,12 +347,10 @@ function LoadingScreen({ onFinished }) {
       });
     }, intervalTime);
 
-    // Memicu animasi exit setelah progress bar penuh (2.5 detik)
     const exitTimer = setTimeout(() => {
       setIsExiting(true);
     }, totalDuration);
 
-    // Memicu fungsi onFinished setelah animasi exit selesai (2.5 detik + 0.5 detik animasi = 3 detik)
     const finishedTimer = setTimeout(() => {
       if (onFinished) onFinished();
     }, totalDuration + 500); 
@@ -337,29 +369,22 @@ function LoadingScreen({ onFinished }) {
         ${isExiting ? '-translate-y-full pointer-events-none' : 'translate-y-0'}`}
     >
       
-      {/* Container Utama */}
       <div className="text-center flex flex-col items-center justify-center flex-grow">
-        {/* Judul Utama */}
         <h1 className="text-4xl md:text-5xl font-bold text-mauve-500 tracking-wide mb-4">
           PreOrder Desert
         </h1>
-
-        {/* Progress Bar Container */}
         <div className="w-64 h-3 bg-gray-200 rounded-full overflow-hidden mb-3">
-          {/* Progress Fill */}
           <div 
             className="h-full bg-mauve-500 transition-all duration-75 ease-out rounded-full"
             style={{ width: `${progress}%` }}
           />
         </div>
 
-        {/* Subtitle / Status Text */}
         <p className="text-gray-600/40 text-sm tracking-wider animate-pulse">
           Tunggu Sebentar...
         </p>
       </div>
 
-      {/* Version Tag */}
       <div className="pb-8 text-gray-600/40 text-sm font-medium">
         v1.0
       </div>
@@ -367,3 +392,5 @@ function LoadingScreen({ onFinished }) {
     </div>
   );
 }
+
+function
