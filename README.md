@@ -1,6 +1,6 @@
 # Pre Order Projects
 
-(Indonesia)
+*(Indonesia)*
 V1:
 
 ### Lisensi :
@@ -9,7 +9,7 @@ Repository ini bersifat open source
 
 #
 
-(English)
+*(English)*
 V1:
 
 ### License :
