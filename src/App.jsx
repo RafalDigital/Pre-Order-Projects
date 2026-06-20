@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react"
 import mockup from './assets/mockup.webp'
+
+/////////////////////////////
+//    Foto Produk Anda     //
+/////////////////////////////
 import MatchaMilleCrepes from './assets/Matcha-Mille-Crepes.webp'
 import ChocolateMousse from './assets/Chocolate-Mousse.webp'
 import TiramisuBox from './assets/Tiramisu-Box.webp'
@@ -20,12 +24,19 @@ const [statusMessage, setStatusMessage] = useState('');
 const [showLoading, setShowLoading] = useState(true);
 const [showSuccessModal, setShowSuccessModal] = useState(false);
 
+  ////////////////////////
+  //    Produk Anda     //
+  ////////////////////////
   const listProduk = [
     { id: 'p1', nama: 'Matcha Mille Crepes', harga: 25000, img: MatchaMilleCrepes},
     { id: 'p2', nama: 'Chocolate Mousse', harga: 30000, img: ChocolateMousse},
     { id: 'p3', nama: 'Tiramisu Box', harga: 35000, img: TiramisuBox},
     { id: 'p4', nama: 'Strawberry Cheesetart', harga: 28000, img: StrawberryCheesetart},
   ];
+
+  /////////////////////////////////
+  //    Tentukan Ongkir Anda     //
+  ////////////////////////////////
   const ongkir = 2000;
 
   const handleNextStep = () => setStep(step + 1)
@@ -64,6 +75,9 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
     setLoading(true);
     setStatusMessage('');
 
+    ////////////////////////
+    //      API Anda      //
+    ////////////////////////
     const APPS_SCRIPT_URL = 'YOUR_API_KEY';
 
     try {
