@@ -1,6 +1,6 @@
 # Pre Order Projects
 
-*(Indonesia)*
+###*(Indonesia)*
 Pre Order Website adalah sebuah aplikasi pre order sederhana berbasis web, yang di tujukan untuk mengotomasi pesanan UMKM pre order agar tidak ada data yang terlewat.
 
 V1:
@@ -14,14 +14,14 @@ Repository ini bersifat open source
 
 #
 
-*(English)*
+###*(English)*
 Pre Order Website is a simple web-based pre-order application, which is intended to automate pre-order orders for MSMEs so that no data is missed.
 
 V1:
 - Minimalist Design
 - Error Status
 - Data containing Name, Phone Number, Address, Delivery Date, Product List, Subtotal, Shipping Cost, and Total is automatically sent to a spreadsheet.
-- 
+
 ### License :
 
 This repository is open source
