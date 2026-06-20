@@ -64,7 +64,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
     setLoading(true);
     setStatusMessage('');
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz9WhpUF_Xn0xawwpLb0iLi378BwLiawEHWiXZZBuloAhlLjoWnD3yIUEXmNW3GCfMT/exec';
+    const APPS_SCRIPT_URL = 'YOUR_API_KEY';
 
     try {
       const teksProdukBeli = listProduk.filter(prod => (formData.produk[prod.id] || 0) > 0).map((prod) => `${prod.nama} (${formData.produk[prod.id]})`).join(', ');
