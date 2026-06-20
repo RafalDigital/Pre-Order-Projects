@@ -11,7 +11,7 @@ V1:
 
 ### Lisensi :
 
-Repository ini bersifat open source
+Repository ini bersifat open source dengan syarat harus mencantumkan nama saya.
 
 #
 
@@ -26,4 +26,7 @@ V1:
 
 ### License :
 
-This repository is open source
+This repository is open source with the condition that my name must be included.
+
+#
+Copyright (c) 2026 RafalDigital
