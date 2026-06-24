@@ -1,5 +1,7 @@
 # Pre Order Projects
 
+Stack : REACT JS, TAILWIND CSS, GOOGLE APPSCRIPT, SPREADSHEET
+
 *(Indonesia)*
 
 Pre Order Website adalah sebuah aplikasi pre order sederhana berbasis web, yang di tujukan untuk mengotomasi pesanan UMKM pre order agar tidak ada data yang terlewat.
